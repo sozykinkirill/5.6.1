@@ -1,4 +1,5 @@
 ﻿
+
 namespace _5._6._1
 {
     internal class Program
@@ -100,11 +101,13 @@ namespace _5._6._1
         }
         static void Main(string[] args)
         {
-            var ShowTime = MetUser();
+            var Show = MetUser();
+            ShowUser(Show);
             Console.ReadKey();
+            //_________________________________КАК ПЕРЕДАТЬ КОРТЕЖ В ПАРАМЕТР МЕТОДА ДЛЯ ДЕМОНСТРАЦИИ 
         }
 
-        static void ShowColors(string Name, string LastName, int Age, bool Animal, string[] AnimalName, string[] color)
+        static void ShowUser(string Name, string LastName, int Age, bool Animal, string[] AnimalName, string[] color)
         {
             Console.WriteLine("Анкета");
             Console.Write("Имя:{0}, Фамилия:{1}, Возраст:{3}", Name, LastName, Age);
