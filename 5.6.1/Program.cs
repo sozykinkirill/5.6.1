@@ -102,25 +102,26 @@ namespace _5._6._1
         static void Main(string[] args)
         {
             var Show = MetUser();
-            ShowUser(Show);
+            ShowAnket(Show);
             Console.ReadKey();
             //_________________________________КАК ПЕРЕДАТЬ КОРТЕЖ В ПАРАМЕТР МЕТОДА ДЛЯ ДЕМОНСТРАЦИИ 
         }
 
-        static void ShowUser(string Name, string LastName, int Age, bool Animal, string[] AnimalName, string[] color)
+        static void ShowAnket((string Name, string LastName, int Age, bool Animal, string[] AnimalName, string[] color) User) 
         {
             Console.WriteLine("Анкета");
-            Console.Write("Имя:{0}, Фамилия:{1}, Возраст:{3}", Name, LastName, Age);
-            if (Animal == true)
+            Console.WriteLine("Имя:{0}, Фамилия:{1}, Возраст: {2}", User.Name, User.Age, User.LastName);
+
+            if (User.Animal == true)
             {
                 Console.WriteLine("У вас есть домашнее(ие) животное(ые):");
-                foreach (var name in AnimalName)
+                foreach (var name in User.AnimalName)
                 {
                     Console.WriteLine(name);
                 }
             }
             Console.WriteLine("Ваши любимые цвета:");
-            foreach (var favcolor in color)
+            foreach (var favcolor in User.color)
             {
                 Console.WriteLine(favcolor);
             }
