@@ -14,30 +14,50 @@ namespace _5._6._1
             Console.WriteLine("Введите фамилию");
             User.LastName = Console.ReadLine();
             //-------------------------------------------Возраст
-            Console.WriteLine("Введите возраст пользователя");
+            /*
             string numage;
             int numage1;
-
             do 
             {
+                Console.WriteLine("Введите возраст пользователя");
                 numage = Console.ReadLine();
             } 
             while (CheckNum(numage, out numage1));
-
             User.Age = numage1;
+            */
+            //-------------------Возраст + Проверка 
+            int numage1;
+            Console.WriteLine("Введите возраст пользователя");
+            while ( true )
+            {
+                
+ 
+                if ( int.TryParse( Console.ReadLine( ), out numage1) )
+                {
+                    User.Age = numage1;
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine( "Некоректное значение, повторите ввод" );
+                }
+                
+            }
+            
+
             //------------------------------------------Животное 
             Console.WriteLine("Есть ли у вас животные? Да или Нет");
             var result = Console.ReadLine();
             if (result == "Да")
             {
-                Console.WriteLine("Введите кол-во животных");
-                string numanimal;
-                int numanimal1;
+                string numAnimal;
+                int numAnimal1;
                 do
                 {
-                    numanimal = Console.ReadLine();
-                } while (CheckNum(numanimal, out numanimal1));
-                User.AnimalName = MetodAnimals(numanimal1);
+                    Console.WriteLine("Введите кол-во животных");
+                    numAnimal = Console.ReadLine();
+                } while (CheckNum(numAnimal, out numAnimal1));
+                User.AnimalName = MetodAnimals(numAnimal1);
                 User.Animal = true;
             }
             else
@@ -48,11 +68,12 @@ namespace _5._6._1
 
             //--------------------------------------------Цвета
 
-            Console.WriteLine(" Сколько у вас любимых цветов?");
+            
             string numcolor;
             int numcolor1;
             do
             {
+                Console.WriteLine("Сколько у вас любимых цветов?");
                 numcolor = Console.ReadLine();
             } 
             while (CheckNum(numcolor, out numcolor1));
@@ -76,6 +97,7 @@ namespace _5._6._1
                 return true;
             }
         }
+        
         //------------------------------------------МЕТОД КЛИЧКИ
         static string[] MetodAnimals(int num)
         {
@@ -104,17 +126,16 @@ namespace _5._6._1
             var Show = MetUser();
             ShowAnket(Show);
             Console.ReadKey();
-            //_________________________________КАК ПЕРЕДАТЬ КОРТЕЖ В ПАРАМЕТР МЕТОДА ДЛЯ ДЕМОНСТРАЦИИ 
         }
 
         static void ShowAnket((string Name, string LastName, int Age, bool Animal, string[] AnimalName, string[] color) User) 
         {
             Console.WriteLine("Анкета");
-            Console.WriteLine("Имя:{0}, Фамилия:{1}, Возраст: {2}", User.Name, User.Age, User.LastName);
+            Console.WriteLine("Имя:{0}, Фамилия:{1}, Возраст: {2}", User.Name, User.LastName, User.Age);
 
             if (User.Animal == true)
             {
-                Console.WriteLine("У вас есть домашнее(ие) животное(ые):");
+                Console.WriteLine("У вас есть домашнее(ие) животное(ые) по кличке:");
                 foreach (var name in User.AnimalName)
                 {
                     Console.WriteLine(name);
